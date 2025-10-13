@@ -235,7 +235,7 @@ entry_points={
 cd ~/ros2_ws
 colcon build
 source install/setup.bash
-ros2 run talk_and_listen_py minimal_talker
+ros2 run talk_and_listen_py minimal_talker &
 ros2 run talk_and_listen_py minimal_listener
 ```
 11. コンソールスクリプト登録
