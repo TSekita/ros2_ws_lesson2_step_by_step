@@ -218,7 +218,7 @@ ros2 run minimal_listener_py minimal_listener
 cd ~/ros2_ws/src
 ros2 pkg create --build-type ament_python talk_and_listen_py --dependencies rclpy
 ```
-#### コードは前述のminimal_talker.pyとminimal_listener.pyをしよう。
+#### コードは前述のminimal_talker.pyとminimal_listener.pyを使用。
 
 ### setup.pyに登録
 ```code
@@ -235,7 +235,8 @@ entry_points={
 cd ~/ros2_ws
 colcon build
 source install/setup.bash
-ros2 run talk_and_listen_py minimal_talker &
+ros2 run talk_and_listen_py minimal_talker 
+# 他のタブで実行
 ros2 run talk_and_listen_py minimal_listener
 ```
 11. コンソールスクリプト登録
