@@ -29,7 +29,7 @@ ros2 pkg create --build-type ament_python minimal_talker_py --dependencies rclpy
 4. 最小ノード
 達成: rclpy.init()→Node→spin→destroy_node() の骨組み実装
 
-## minimal_talker.pyを作成
+#### minimal_talker.pyを作成
 ```code
 # 回答
 # ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/minimal_talker.pyを作成
@@ -51,7 +51,7 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 ```
-## setup.pyへ登録
+#### setup.pyへ登録
 ```code
 # ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/setup.py
 entry_points={
