@@ -22,8 +22,31 @@ echo source ~/ros2_ws/install/setup.bash >> ~/.bashrc
 3. 最初のパッケージ
 達成: rclpy 依存の minimal_talker_py 作成しビルド通過
 ```bash
+## 回答
 cd ~/ros2_ws/src
-ros2 pkg create minimal_talker_py --build-type ament_python
+ros2 pkg create --build-type ament_python minimal_talker_py --dependencies rclpy
+```
+```code
+import rclpy
+from rclpy.node import Node
+
+class MinimalTalker(Node):
+    def __init__(self):
+        super().__init__('minimal_talker')
+        self.get_logger().info('MinimalTalker started')
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = MinimalTalker()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+ 
+if __name__ == '__main__':
+    main()
+
+```
+```bash
 cd ~/ros2_ws
 colcon build
 ```
