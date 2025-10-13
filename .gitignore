@@ -1,0 +1,62 @@
+# ==========================
+# ROS 2 workspace ignore template
+# ==========================
+
+# --- colcon build artifacts ---
+build/
+install/
+log/
+
+# --- Python build caches ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.eggs/
+*.cache/
+*.pytest_cache/
+.pytest_cache/
+
+# --- CMake / ament artifacts ---
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+ament_cmake_core/
+ament_index/
+ament_prefix_path/
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- Temporary / system ---
+*.bak
+*.tmp
+*.log
+*.out
+*.lock
+
+# --- Colcon metadata (optional) ---
+.colcon/
+colcon-core/
+colcon-metadata/
+
+# --- ROS dep files (auto-generated) ---
+rosdep.yaml
+dependencies.repos
+
+# --- Container or environment artifacts ---
+*.env
+*.venv/
+.env/
+.venv/
+*.dockerfile
+*.tar
+
