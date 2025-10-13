@@ -5,8 +5,9 @@
 1. ワークスペース作成
 達成: ~/ros2_ws/src 作成、colcon build が空ビルド成功
 ```bash
+## 回答
 mkdir -p ~/ros2_ws/src
-cd ros2_ws
+cd ~/ros2_ws
 colcon build
 ```
 
