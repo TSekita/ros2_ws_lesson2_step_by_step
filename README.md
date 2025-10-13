@@ -165,7 +165,53 @@ ros2 topic list
 ```
 Subscriber作成
 達成: /chatter を受信してログ出力
+```bash
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python minimal_listener_py --dependencies rclpy
+```
+#### コード作成
+```code
+# ~/ros2_ws/src/minimal_listener_py/minimal_listener_py/minimal_listener.py
+import rclpy
+from rclpy.node import Node
 
+from std_msgs.msg import String
+
+class MinimalListener(Node):
+    def __init__(self):
+        super().__init__('minimal_listener')
+        self.subscription = self.create_subscription(
+            String,
+            'chatter',
+            self.listener,
+            10)
+        self.subscription
+
+    def listener(self, msg):
+        self.get_logger().info('I heard "%s"' % msg.data)
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = MinimalListener()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+#### 実行
+```bash
+cd ~/ros2_ws
+colcon build
+source install/setup.bash
+ros2 run minimal_talker_py minimal_talker
+```
+#### 他のタブで実行
+```bash
+source install/setup.bash
+ros2 run minimal_listener_py minimal_listener
+```
 Pub/Sub同時実行
 達成: 同一パッケージに talker と listener 2本
 
