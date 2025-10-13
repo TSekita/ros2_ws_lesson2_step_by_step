@@ -163,7 +163,7 @@ ros2 run minimal_talker_py minimal_talker
 # 実行中に他のタブで実行
 ros2 topic list
 ```
-Subscriber作成
+9. Subscriber作成
 達成: /chatter を受信してログ出力
 ```bash
 cd ~/ros2_ws/src
@@ -212,28 +212,51 @@ ros2 run minimal_talker_py minimal_talker
 source install/setup.bash
 ros2 run minimal_listener_py minimal_listener
 ```
-Pub/Sub同時実行
+10. Pub/Sub同時実行
 達成: 同一パッケージに talker と listener 2本
+```bash
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python talk_and_listen_py --dependencies rclpy
+```
+#### コードは前述のminimal_talker.pyとminimal_listener.pyをしよう。
 
-コンソールスクリプト登録
+### setup.pyに登録
+```code
+# ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/setup.py
+entry_points={
+    'console_scripts': [
+        'minimal_talker = minimal_talker_py.minimal_talker:main',
+        'minimal_listener = minimal_listener_py.minimal_listener:main',
+    ],
+},
+```
+#### 実行
+```bash
+cd ~/ros2_ws
+colcon build
+source install/setup.bash
+ros2 run talk_and_listen_py minimal_talker
+ros2 run talk_and_listen_py minimal_listener
+```
+11. コンソールスクリプト登録
 達成: setup.py の entry_points 設定で ros2 run 起動可能
 
-ament_python の使い方
+12. ament_python の使い方
 達成: package.xml に <exec_depend>rclpy</exec_depend> 等を正しく記述
 
-リマッピング
+13. リマッピング
 達成: ros2 run ... --ros-args -r /chatter:=/news で動作
 
-ネームスペース
+14. ネームスペース
 達成: --ros-args -r __ns:=/ns1 で /ns1/chatter となる
 
-QoS: 信頼性
+15. QoS: 信頼性
 達成: ReliabilityPolicy.BEST_EFFORT に変更し動作比較
 
-QoS: 履歴と深さ
+16. QoS: 履歴と深さ
 達成: HistoryPolicy.KEEP_LAST 深さ=5で送受信
 
-QoS: 耐久性
+17. QoS: 耐久性
 達成: DurabilityPolicy.TRANSIENT_LOCAL でLate-joiner受信を確認
 
 コールバックグループ
