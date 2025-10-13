@@ -44,11 +44,19 @@ def main(args=None):
  
 if __name__ == '__main__':
     main()
-
+```
+```code
+## setup.pyへ登録
+entry_points={
+    'console_scripts': [
+        'minimal_talker = minimal_talker_py.minimal_talker:main',
+    ],
+},
 ```
 ```bash
 cd ~/ros2_ws
 colcon build
+ros2 run minimal_talker minimal_talker
 ```
 
 4. 最小ノード
