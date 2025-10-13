@@ -13,6 +13,11 @@ colcon build
 
 2. 環境セットアップ
 達成: source /opt/ros/humble/setup.bash と ros2_ws/install/setup.bash を .bashrc へ追記
+```bash
+## 回答
+echo source /opt/ros/humble/setup.bash >> ~/.bashrc
+echo source ~/ros2_ws/install/setup.bash >> ~/.bashrc
+```
 
 3. 最初のパッケージ
 達成: rclpy 依存の minimal_talker_py 作成しビルド通過
