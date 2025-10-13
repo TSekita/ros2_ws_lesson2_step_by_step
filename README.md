@@ -27,6 +27,7 @@ cd ~/ros2_ws/src
 ros2 pkg create --build-type ament_python minimal_talker_py --dependencies rclpy
 ```
 ```code
+## ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/minimal_talker.pyを作成
 import rclpy
 from rclpy.node import Node
 
