@@ -47,7 +47,7 @@ if __name__ == '__main__':
     main()
 ```
 ```code
-## setup.pyへ登録
+## ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/setup.pyへ登録
 entry_points={
     'console_scripts': [
         'minimal_talker = minimal_talker_py.minimal_talker:main',
