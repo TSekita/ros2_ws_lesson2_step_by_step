@@ -105,6 +105,7 @@ def main(args=None):
  
 if __name__ == '__main__':
     main()
+```
 #### 実行
 ```bash
 cd ~/ros2_ws
@@ -126,7 +127,7 @@ from std_msgs.msg import String
 class MinimalTalker(Node):
     def __init__(self):
         super().__init__('minimal_talker')
-        self.publisher_ = self.create_publisher(String, 'topic', 10)
+        self.publisher_ = self.create_publisher(String, 'chatter', 10)
         timer_period = 1 # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.count = 0
@@ -147,7 +148,6 @@ def main(args=None):
  
 if __name__ == '__main__':
     main()
-
 ```
 #### 実行
 ```bash
@@ -158,7 +158,11 @@ ros2 run minimal_talker_py minimal_talker
 ```
 8. CLIで購読確認
 達成: ros2 topic echo /chatter に送信内容が表示
-
+#### 確認
+```bash
+# 実行中に他のタブで実行
+ros2 topic list
+```
 Subscriber作成
 達成: /chatter を受信してログ出力
 
