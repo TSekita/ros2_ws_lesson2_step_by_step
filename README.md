@@ -2,28 +2,33 @@
 
 以下の100問で進める。前提: Ubuntu 22.04 + ROS 2 Humble on Docker、言語はPython、ros2_ws を想定。各問は「課題 → 達成条件」の順。
 
--ワークスペース作成
+1. ワークスペース作成
 達成: ~/ros2_ws/src 作成、colcon build が空ビルド成功
+```bash
+mkdir -p ~/ros2_ws/src
+cd ros2_ws
+colcon build
+```
 
--環境セットアップ
+2. 環境セットアップ
 達成: source /opt/ros/humble/setup.bash と ros2_ws/install/setup.bash を .bashrc へ追記
 
--最初のパッケージ
+3. 最初のパッケージ
 達成: rclpy 依存の minimal_talker_py 作成しビルド通過
 
--最小ノード
+4. 最小ノード
 達成: rclpy.init()→Node→spin→destroy_node() の骨組み実装
 
--ロガー使用
+5. ロガー使用
 達成: self.get_logger().info() で1回出力
 
--タイマーで周期処理
+6. タイマーで周期処理
 達成: 0.5秒周期でカウント出力
 
-Publisher作成
+7. Publisher作成
 達成: /chatter に std_msgs/String を1Hzで送信
 
-CLIで購読確認
+8. CLIで購読確認
 達成: ros2 topic echo /chatter に送信内容が表示
 
 Subscriber作成
