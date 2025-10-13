@@ -21,6 +21,12 @@ echo source ~/ros2_ws/install/setup.bash >> ~/.bashrc
 
 3. 最初のパッケージ
 達成: rclpy 依存の minimal_talker_py 作成しビルド通過
+```bash
+cd ~/ros2_ws/src
+ros2 pkg create minimal_talker_py --build-type ament_python
+cd ~/ros2_ws
+colcon build
+```
 
 4. 最小ノード
 達成: rclpy.init()→Node→spin→destroy_node() の骨組み実装
