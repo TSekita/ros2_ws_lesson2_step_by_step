@@ -63,7 +63,8 @@ entry_points={
 ```bash
 cd ~/ros2_ws
 colcon build
-ros2 run minimal_talker minimal_talker
+source install/setup.bash
+ros2 run minimal_talker_py minimal_talker
 ```
 5. ロガー使用
 達成: self.get_logger().info() で1回出力

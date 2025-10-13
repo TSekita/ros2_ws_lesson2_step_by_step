@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'minimal_talker = minimal_talker_py.minimal_talker:main',
         ],
     },
 )

@@ -1,3 +1,5 @@
+# 回答
+# ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/minimal_talker.pyを作成
 import rclpy
 from rclpy.node import Node
 
@@ -12,6 +14,6 @@ def main(args=None):
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
-
+ 
 if __name__ == '__main__':
     main()
