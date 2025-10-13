@@ -26,7 +26,10 @@ echo source ~/ros2_ws/install/setup.bash >> ~/.bashrc
 cd ~/ros2_ws/src
 ros2 pkg create --build-type ament_python minimal_talker_py --dependencies rclpy
 ```
+4. 最小ノード
+達成: rclpy.init()→Node→spin→destroy_node() の骨組み実装
 ```code
+## 回答
 ## ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/minimal_talker.pyを作成
 import rclpy
 from rclpy.node import Node
@@ -59,10 +62,6 @@ cd ~/ros2_ws
 colcon build
 ros2 run minimal_talker minimal_talker
 ```
-
-4. 最小ノード
-達成: rclpy.init()→Node→spin→destroy_node() の骨組み実装
-
 5. ロガー使用
 達成: self.get_logger().info() で1回出力
 
