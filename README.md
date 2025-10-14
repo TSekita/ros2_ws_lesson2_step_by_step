@@ -337,6 +337,80 @@ ros2 topic list
 15. QoS: 信頼性
 達成: ReliabilityPolicy.BEST_EFFORT に変更し動作比較
 
+```code
+# 回答
+# ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/minimal_talker.pyを作成
+import rclpy
+from rclpy.node import Node
+
+from std_msgs.msg import String
+from rclpy.qos import QoSProfile, ReliabilityPolicy
+
+class MinimalTalker(Node):
+    def __init__(self):
+        super().__init__('minimal_talker')
+        qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)
+        # qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
+        self.publisher_ = self.create_publisher(String, 'chatter', qos_profile)
+        # self.publisher_ = self.create_publisher(String, 'chatter', 10)
+        # timer_period = 0.5 # seconds
+        timer_period = 1 # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.count = 0
+
+    def timer_callback(self):
+        msg = String()
+        msg.data = 'Count: %d' % self.count
+        self.publisher_.publish(msg)
+        # self.get_logger().info(f'Count: {self.count}')
+        self.get_logger().info('Publishing: "%s"' % msg.data)
+        self.count += 1
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = MinimalTalker()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+ 
+if __name__ == '__main__':
+    main()
+```
+```code
+# ~/ros2_ws/src/minimal_listener_py/minimal_listener_py/minimal_listener.py
+import rclpy
+from rclpy.node import Node
+
+from std_msgs.msg import String
+from rclpy.qos import QoSProfile, ReliabilityPolicy
+
+class MinimalListener(Node):
+    def __init__(self):
+        super().__init__('minimal_listener')
+        qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)
+        # qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
+        self.subscription = self.create_subscription(String, 'chatter', self.listener, qos_profile)
+        # self.subscription = self.create_subscription(
+        #    String,
+        #    'chatter',
+        #    self.listener,
+        #    10)
+        self.subscription
+
+    def listener(self, msg):
+        self.get_logger().info('I heard "%s"' % msg.data)
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = MinimalListener()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+```
+
 16. QoS: 履歴と深さ
 達成: HistoryPolicy.KEEP_LAST 深さ=5で送受信
 

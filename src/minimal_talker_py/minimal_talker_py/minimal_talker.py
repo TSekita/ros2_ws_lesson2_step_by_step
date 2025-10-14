@@ -4,11 +4,15 @@ import rclpy
 from rclpy.node import Node
 
 from std_msgs.msg import String
+from rclpy.qos import QoSProfile, ReliabilityPolicy
 
 class MinimalTalker(Node):
     def __init__(self):
         super().__init__('minimal_talker')
-        self.publisher_ = self.create_publisher(String, 'chatter', 10)
+        qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE)
+        # qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
+        self.publisher_ = self.create_publisher(String, 'chatter', qos_profile)
+        # self.publisher_ = self.create_publisher(String, 'chatter', 10)
         # timer_period = 0.5 # seconds
         timer_period = 1 # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
