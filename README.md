@@ -330,6 +330,10 @@ ros2 topic list
 14. ネームスペース
 達成: --ros-args -r __ns:=/ns1 で /ns1/chatter となる
 
+#### 目的
+
+複数ロボットやモジュールを扱う際に、トピック名やノード名が衝突しないようネームスペースを設定できるようにする。
+
 15. QoS: 信頼性
 達成: ReliabilityPolicy.BEST_EFFORT に変更し動作比較
 
