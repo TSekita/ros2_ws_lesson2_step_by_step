@@ -220,6 +220,25 @@ ros2 pkg create --build-type ament_python talk_and_listen_py --dependencies rclp
 ```
 #### コードは前述のminimal_talker.pyとminimal_listener.pyを使用。
 
+#### 同時起動のためのlaunchファイルを作成
+# ~/ros2ws/src/talk_and_listen_py/launch/talk_listen.launch.py
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='minimal_talker_py',
+            executable='minimal_talker',
+            name='minimal_talker'
+        ),
+        Node(
+            package='minimal_listener_py',
+            executable='minimal_listener',
+            name='minimal_listener'
+        ),
+   ]) 
+
 ### setup.pyに登録
 ```code
 # ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/setup.py
