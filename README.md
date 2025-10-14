@@ -316,10 +316,16 @@ ros2 launch talk_and_listen_py talk_listen.launch.py
 ```xml
 <depend>rclpy</depend>
 ```
-がpackage.xmlに追加される。
+がpackage.xmlに追加される。後で追加する場合はpackage.xmlに挿入。
 
 13. リマッピング
 達成: ros2 run ... --ros-args -r /chatter:=/news で動作
+
+#### 実行するとtopic名が/chatterから/newsへ変わる。
+```bash
+# topicリスト確認方法
+ros2 topic list
+```
 
 14. ネームスペース
 達成: --ros-args -r __ns:=/ns1 で /ns1/chatter となる
