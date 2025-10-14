@@ -312,7 +312,7 @@ ros2 launch talk_and_listen_py talk_listen.launch.py
 | `<test_depend>`  | テストに必要                        | `colcon test` 実行時  | pytest等のテスト環境用                      |
 | `<depend>`       | 上3つをまとめた省略形（ビルド・実行・エクスポート全対応） | すべて                | 単純な依存指定に使う（CMake型でよく使用）             |
 
-#### pkg createの際に--dependenciesの後ろにrclpyを記述することで、<depend>rclpy</depend>がpackage.xmlに追加される。
+#### pkg createの際に--dependenciesの後ろにrclpyを記述することで、 <depend>rclpy</depend> がpackage.xmlに追加される。
 
 13. リマッピング
 達成: ros2 run ... --ros-args -r /chatter:=/news で動作
