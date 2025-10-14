@@ -300,8 +300,17 @@ ros2 launch talk_and_listen_py talk_listen.launch.py
 11. コンソールスクリプト登録
 達成: setup.py の entry_points 設定で ros2 run 起動可能
 
+#### コンソールスクリプト登録はすでに達成のため省略
+
 12. ament_python の使い方
 達成: package.xml に <exec_depend>rclpy</exec_depend> 等を正しく記述
+
+| タグ               | 意味                            | 使用される段階            | 典型用途                                |
+| ---------------- | ----------------------------- | ------------------ | ----------------------------------- |
+| `<build_depend>` | ビルドに必要                        | `colcon build` 実行時 | コンパイルや生成に必要なツール・ライブラリ               |
+| `<exec_depend>`  | 実行に必要                         | `ros2 run` 実行時     | 実行時にimportや呼び出しが発生するPython/ROSパッケージ |
+| `<test_depend>`  | テストに必要                        | `colcon test` 実行時  | pytest等のテスト環境用                      |
+| `<depend>`       | 上3つをまとめた省略形（ビルド・実行・エクスポート全対応） | すべて                | 単純な依存指定に使う（CMake型でよく使用）             |
 
 13. リマッピング
 達成: ros2 run ... --ros-args -r /chatter:=/news で動作
