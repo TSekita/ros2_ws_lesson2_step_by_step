@@ -419,9 +419,9 @@ if __name__ == '__main__':
 + HistoryPolicy # importにHistoryPolicy追加
 
 qos_profile = QoSProfile(
-  + history=HistoryPolicy.KEEP_LAST,        # 最新のメッセージを保持
-  + depth=5,                                # 保存するメッセージ数
-    reliability=ReliabilityPolicy.RELIABLE
++ history=HistoryPolicy.KEEP_LAST,        # 最新のメッセージを保持
++ depth=5,                                # 保存するメッセージ数
+  reliability=ReliabilityPolicy.RELIABLE
 )
 ```
 
