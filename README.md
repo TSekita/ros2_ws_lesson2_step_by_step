@@ -337,6 +337,14 @@ ros2 topic list
 15. QoS: 信頼性
 達成: ReliabilityPolicy.BEST_EFFORT に変更し動作比較
 
+#### QoS(Quality of Service)とは
+
+  - QoSと呼ばれるいくつかのパラメータを使って
+
+    通信の信頼性を制御する。
+
+    https://www.youtalk.jp/2017/05/30/ros2-qos.html
+    
 ```code
 # 回答
 # ~/ros2_ws/src/minimal_talker_py/minimal_talker_py/minimal_talker.pyを作成
