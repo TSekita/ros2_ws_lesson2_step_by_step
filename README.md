@@ -460,9 +460,18 @@ qos_profile = QoSProfile(
 
   - マルチスレッド型実行ツールで、コントロールするための２種類のグループがある。
 
-    - Mutually Exclusive Callback Group
+    - Mutually Exclusive Callback Group（排他）
 
-    - Reentrant Callback Group
+      １グループ内のコールバックは同時に１つしか動かない。
+
+      例：センサ読み取りと処理を排他制御したい場合。
+
+    - Reentrant Callback Group（再入可能）
+
+      同じグループ内でも複数コールバックが同時実行可能。
+
+      例：サービス要求を並列に処理したい場合。
+
 
 
 19. Executor: シングル vs マルチ
