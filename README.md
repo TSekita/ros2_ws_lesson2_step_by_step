@@ -414,46 +414,57 @@ if __name__ == '__main__':
 16. QoS: 履歴と深さ
 達成: HistoryPolicy.KEEP_LAST 深さ=5で送受信
 
+#### 以下を適宜追加。
+```diff
++ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy # HistoryPolicy追加
+
++ qos_profile = QoSProfile(
+      history=HistoryPolicy.KEEP_LAST,        # 最新のメッセージを保持
+      depth=5,                                # 保存するメッセージ数
+      reliability=ReliabilityPolicy.RELIABLE
+  )
+```
+
 17. QoS: 耐久性
 達成: DurabilityPolicy.TRANSIENT_LOCAL でLate-joiner受信を確認
 
-コールバックグループ
+18. コールバックグループ
 達成: ReentrantCallbackGroup で重複処理がブロックされないことを観察
 
-Executor: シングル vs マルチ
+19. Executor: シングル vs マルチ
 達成: MultiThreadedExecutor を適用し並行受信を確認
 
-レート制御
+20. レート制御
 達成: Clock と Rate で制御ループを実装
 
-パラメータ宣言
+21. パラメータ宣言
 達成: declare_parameter と get_parameter で整数パラメータ取得
 
-動的パラメータ更新
+22. 動的パラメータ更新
 達成: add_on_set_parameters_callback で検証ロジックを実装
 
-YAMLからパラメータ読込
+23. YAMLからパラメータ読込
 達成: --ros-args --params-file config.yaml で反映
 
-パラメタイベント購読
+24. パラメタイベント購読
 達成: /parameter_events を購読し更新ログを表示
 
-ノード間パラメータ取得
+25. ノード間パラメータ取得
 達成: rclpy.parameter_client 相当のクライアントで取得
 
-サービスサーバ
+26. サービスサーバ
 達成: example_interfaces/srv/AddTwoInts 実装
 
-サービスクライアント
+27. サービスクライアント
 達成: リクエスト送信し応答を受信
 
-タイムアウト処理
+28. タイムアウト処理
 達成: サービス呼び出しにタイムアウトを付与
 
-アクションサーバ
+29. アクションサーバ
 達成: example_interfaces/action/Fibonacci をPythonで実装
 
-アクションクライアント
+30. アクションクライアント
 達成: ゴール送信→フィードバック受信→結果取得
 
 カスタムmsg作成
