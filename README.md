@@ -456,6 +456,15 @@ qos_profile = QoSProfile(
 18. コールバックグループ
 達成: ReentrantCallbackGroup で重複処理がブロックされないことを観察
 
+#### CallbackGroupとは
+
+  - マルチスレッド型実行ツールで、コントロールするための２種類のグループがある。
+
+    - Mutually Exclusive Callback Group
+
+    - Reentrant Callback Group
+
+
 19. Executor: シングル vs マルチ
 達成: MultiThreadedExecutor を適用し並行受信を確認
 
