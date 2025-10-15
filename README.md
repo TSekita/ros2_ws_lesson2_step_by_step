@@ -436,6 +436,23 @@ qos_profile = QoSProfile(
 17. QoS: 耐久性
 達成: DurabilityPolicy.TRANSIENT_LOCAL でLate-joiner受信を確認
 
+#### DurabilityPolicy.TRANSIENT_LOCALとは
+
+  - Transientlocal: 遅いタイミングでSubscribeした相手に配信するために、
+
+    Publish時に最後のサンプルを保持する。
+
+#### 以下を適宜追加。
+```diff
++ DurabilityPolicy # importにDurabilityPolicy追加
+
+qos_profile = QoSProfile(
++  durability=DurabilityPolicy.TRANSIENT_LOCAL,
+  history=HistoryPolicy.KEEP_LAST,
+  depth=5, 
+  reliability=ReliabilityPolicy.RELIABLE
+)
+```
 18. コールバックグループ
 達成: ReentrantCallbackGroup で重複処理がブロックされないことを観察
 
