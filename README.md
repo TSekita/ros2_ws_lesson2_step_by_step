@@ -416,13 +416,13 @@ if __name__ == '__main__':
 
 #### 以下を適宜追加。
 ```diff
-+ from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy # HistoryPolicy追加
++ HistoryPolicy # importにHistoryPolicy追加
 
-+ qos_profile = QoSProfile(
-      history=HistoryPolicy.KEEP_LAST,        # 最新のメッセージを保持
-      depth=5,                                # 保存するメッセージ数
-      reliability=ReliabilityPolicy.RELIABLE
-  )
+qos_profile = QoSProfile(
+  + history=HistoryPolicy.KEEP_LAST,        # 最新のメッセージを保持
+  + depth=5,                                # 保存するメッセージ数
+    reliability=ReliabilityPolicy.RELIABLE
+)
 ```
 
 17. QoS: 耐久性
