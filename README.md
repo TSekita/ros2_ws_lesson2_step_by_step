@@ -542,6 +542,11 @@ entry_points={
     ],
 },
 ```
+シングルスレッドに変更して実行：SingleThreadedExecutor()
+→ SlowSubscriber の sleep(2) 中に FastPublisher がブロックされる。
+
+マルチスレッドに戻して実行：MultiThreadedExecutor(num_threads=2)
+→ FastPublisher がブロックされず継続送信。
 20. レート制御
 達成: Clock と Rate で制御ループを実装
 
